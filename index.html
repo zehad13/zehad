@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.R.M. Zehad - Professional E-Portfolio</title>
+    <!-- Load Tailwind CSS via CDN for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font for a clean, modern look -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #10569c;
+            /* Light Slate Background */
+            color: #1e293b;
+            /* Dark text */
+        }
+
+        /* Custom styles for smooth scroll padding */
+        .section-padding {
+            padding-top: 8rem;
+            /* Large top padding to account for fixed header */
+            padding-bottom: 4rem;
+        }
+
+        /* Active nav link highlight */
+        .nav-link.active {
+            color: #1d4ed8;
+            /* Blue 700 */
+            border-bottom: 3px solid #1d4ed8;
+            font-weight: 600;
+        }
+
+        /* Custom progress bar appearance */
+        .progress-bar {
+            height: 10px;
+            background-color: #bfdbfe;
+            /* Blue 200 */
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3b82f6;
+            /* Blue 500 */
+            transition: width 1s ease-in-out;
+        }
+
+        /* Custom styling for the timeline circles */
+        .timeline-circle {
+            width: 1rem;
+            height: 1rem;
+            background-color: #3b82f6;
+            border: 3px solid #bfdbfe;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        /* NEW: Custom style for background image with dark overlay */
+        .home-background {
+            /* Set the uploaded image as background */
+            background-image: url('/files/WhatsApp Image 2025-11-17 at 23.55.31_eeb7992f.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            /* Adjusted position to better show the path */
+            background-attachment: fixed;
+            /* Optional: adds a subtle parallax effect */
+            position: relative;
+        }
+
+        .home-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            /* Dark overlay for text readability */
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .content-z-index {
+            z-index: 2;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body class="antialiased text-gray-800">
+
+    <!-- Fixed Header and Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg border-b border-gray-100">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-2xl font-extrabold text-blue-700">A.R.M. Zehad</div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex space-x-6">
+                <a href="#home" class="nav-link text-gray-600 hover:text-blue-700 transition duration-300 pb-2">Home</a>
+                <a href="#about"
+                    class="nav-link text-gray-600 hover:text-blue-700 transition duration-300 pb-2">About</a>
+                <a href="#qualification"
+                    class="nav-link text-gray-600 hover:text-blue-700 transition duration-300 pb-2">Qualification</a>
+                <a href="#projects"
+                    class="nav-link text-gray-600 hover:text-blue-700 transition duration-300 pb-2">Projects</a>
+                <a href="#skills"
+                    class="nav-link text-gray-600 hover:text-blue-700 transition duration-300 pb-2">Skills</a>
+                <a href="#achievements"
+                    class="nav-link text-gray-600 hover:text-blue-700 transition duration-300 pb-2">Achievements</a>
+                <a href="#resume"
+                    class="nav-link text-gray-600 hover:text-blue-700 transition duration-300 pb-2">Resume</a>
+                <a href="#contact"
+                    class="nav-link text-gray-600 hover:text-blue-700 transition duration-300 pb-2">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-button" class="lg:hidden text-gray-600 hover:text-blue-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Navigation (Hidden by default) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 py-2">
+            <a href="#home"
+                class="nav-link block px-4 py-2 text-base font-medium text-gray-700 hover:bg-blue-50">Home</a>
+            <a href="#about"
+                class="nav-link block px-4 py-2 text-base font-medium text-gray-700 hover:bg-blue-50">About</a>
+            <a href="#qualification"
+                class="nav-link block px-4 py-2 text-base font-medium text-gray-700 hover:bg-blue-50">Qualification</a>
+            <a href="#projects"
+                class="nav-link block px-4 py-2 text-base font-medium text-gray-700 hover:bg-blue-50">Projects</a>
+            <a href="#skills"
+                class="nav-link block px-4 py-2 text-base font-medium text-gray-700 hover:bg-blue-50">Skills</a>
+            <a href="#achievements"
+                class="nav-link block px-4 py-2 text-base font-medium text-gray-700 hover:bg-blue-50">Achievements</a>
+            <a href="#resume"
+                class="nav-link block px-4 py-2 text-base font-medium text-gray-700 hover:bg-blue-50">Resume</a>
+            <a href="#contact"
+                class="nav-link block px-4 py-2 text-base font-medium text-gray-700 hover:bg-blue-50">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section (UPDATED with Background Image and Text Color adjustments) -->
+        <section id="home" class="section-padding min-h-screen flex items-center home-background">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 content-z-index">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-12 max-w-6xl mx-auto">
+                    <!-- Image Content (Top on Mobile, Right on Desktop) -->
+                    <div class="flex justify-center order-1">
+                        <!-- Placeholder Image. Used custom border/shadow for dark background -->
+                        <img src=zeez.jpg alt="A.R.M. Zehad Profile Picture"
+                            class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-2xl border-4 border-blue-300 transform transition duration-500 hover:scale-105 shadow-black/50">
+                    </div>
+
+                    <!-- Text Content (Bottom on Mobile, Left on Desktop) -->
+                    <div class="md:w-1/2 text-center md:text-left order-2">
+                        <h1 class="text-5xl sm:text-7xl font-extrabold text-white leading-tight mb-4">
+                            Hello, I'm <span class="text-blue-300">A.R.M. Zehad</span>
+                        </h1>
+                        <p class="text-xl sm:text-2xl text-gray-200 mb-8">
+                            An aspiring engineer focused on innovative solutions and creative problem-solving.
+                        </p>
+                        <div class="flex justify-center md:justify-start space-x-4">
+                            <!-- Buttons remain visible and accessible -->
+                            <a href="#projects"
+                                class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">View
+                                Projects</a>
+                            <a href="#contact"
+                                class="px-8 py-3 bg-white border-2 border-blue-600 text-blue-600 font-semibold rounded-lg shadow-md hover:bg-blue-50 transition duration-300 transform hover:scale-105">Hire
+                                Me</a>
+                        </div>
+
+                        <!-- Social Links (Colors updated for contrast) -->
+                        <div class="mt-12 flex justify-center md:justify-start space-x-6">
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/a-r-m-zehad-4aab8237a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                target="_blank" class="text-white hover:text-blue-300 transition duration-300">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zm-10 12V9H2v11zM8 4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+                                </svg>
+                            </a>
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/share/17shZYwRUX/" target="_blank"
+                                class="text-white hover:text-blue-300 transition duration-300">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.24.195 2.24.195v2.46h-1.264c-1.248 0-1.644.773-1.644 1.573V12h2.775l-.443 2.89h-2.332v6.987C18.343 21.128 22 16.991 22 12z" />
+                                </svg>
+                            </a>
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/a_r_m_zehad?igsh=ZGplbXY1bGd5cmRi" target="_blank"
+                                class="text-white hover:text-blue-300 transition duration-300">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2c2.716 0 3.056.01 4.122.062 1.056.05 1.745.215 2.378.468a4.2 4.2 0 0 1 1.678 1.079 4.2 4.2 0 0 1 1.079 1.678c.253.633.418 1.322.468 2.378.052 1.066.062 1.406.062 4.122s-.01 3.056-.062 4.122c-.05.772-.18.892-.257.994a4.204 4.204 0 0 1-.822 1.033c-.34.341-.741.611-1.189.8a3.978 3.978 0 0 1-.941.341c-1.066.052-1.406.062-4.122.062s-3.056-.01-4.122-.062c-1.056-.05-1.745-.215-2.378-.468a4.2 4.2 0 0 1-1.678-1.079 4.2 4.2 0 0 1-1.079-1.678c-.253-.633-.418-1.322-.468-2.378-.052-1.066-.062-1.406-.062-4.122s.01-3.056.062-4.122c.05-.772.18-.892.257-.994a4.204 4.204 0 0 1 .822-1.033c.34-.341.741-.611 1.189-.8a3.978 3.978 0 0 1 .941-.341c1.066-.052 1.406-.062 4.122-.062zm0-2c-2.784 0-3.136.012-4.212.064-1.042.05-1.79.224-2.428.472a6.204 6.204 0 0 0-2.33 1.488 6.204 6.204 0 0 0-1.488 2.33c-.248.638-.422 1.386-.472 2.428C2.012 8.864 2 9.216 2 12s.012 3.136.064 4.212c.05.772.18.892.257.994a6.204 6.204 0 0 0 1.589 1.428 6.204 6.204 0 0 0 1.428 1.589c.102.077.222.207.994.257 1.076.052 1.428.064 4.212.064s3.136-.012 4.212-.064c1.042-.05 1.79-.224 2.428-.472a6.204 6.204 0 0 0 2.33-1.488 6.204 6.204 0 0 0 1.488-2.33c.248-.638.422-1.386.472-2.428.052-1.076.064-1.428.064-4.212s-.012-3.136-.064-4.212c-.05-.772-.18-.892-.257-.994a6.204 6.204 0 0 0-1.589-1.428 6.204 6.204 0 0 0-1.428-1.589c-.102-.077-.222-.207-.994-.257C15.136 2.012 14.784 2 12 2zm0 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm6.5-1.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section-padding bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <h2
+                    class="text-4xl font-bold text-center text-gray-900 mb-10 border-b-4 border-blue-200 inline-block pb-2">
+                    About Me</h2>
+                <div class="text-lg text-gray-700 leading-relaxed space-y-6">
+                    <h2>I am A.R.M. Zehad, a highly motivated and detail-oriented student at American International
+                        University-Bangladesh (AIUB), currently in my 7th semester. I am passionate about Data Science,
+                        Machine Learning, and Artificial Intelligence, and I am eager to apply my knowledge to build
+                        impactful, intelligent, and data-driven solutions.
+
+                        Throughout my academic journey, I have developed strong foundations in Python programming, data
+                        analysis, machine learning algorithms, and AI model development. I enjoy transforming raw data
+                        into actionable insights, building predictive models, and deploying AI-powered systems to solve
+                        real-world problems.
+
+                        I thrive in environments that encourage rapid learning, collaboration, and innovation. I am
+                        continuously enhancing my skills in Pandas, NumPy, Scikit-learn, TensorFlow, data visualization,
+                        and AI deployment, while also focusing on problem-solving, teamwork, and effective
+                        communication. I am excited to take on challenging projects that merge theoretical knowledge
+                        with practical application to create meaningful impact in the field of AI and Data Science..
+                    </h2>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Qualification/Timeline Section -->
+        <section id="qualification" class="section-padding bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2
+                    class="text-4xl font-bold text-center text-gray-900 mb-12 border-b-4 border-blue-200 inline-block pb-2">
+                    Qualification Timeline</h2>
+
+                <div class="relative max-w-5xl mx-auto">
+                    <!-- Vertical Line -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-blue-300 hidden md:block">
+                    </div>
+
+                    <!-- Timeline Items -->
+                    <div class="space-y-12">
+                        <!-- Item 1: University -->
+                        <div class="relative md:grid md:grid-cols-2 md:gap-12 items-center">
+                            <div class="md:text-right p-4 bg-white rounded-lg shadow-xl border border-blue-100">
+                                <h3 class="text-xl font-bold text-blue-600">B.Sc. in [ Computer Science and Engineering]
+                                </h3>
+                                <p class="text-gray-600">[American International University-Bangladesh]</p>
+                                <p class="text-sm text-gray-500">2023 - Present</p>
+                                <p class="mt-2 text-gray-700">
+                                    Focused on <strong>Data Science, Machine Learning, and Artificial
+                                        Intelligence</strong>.
+                                    Currently exploring advanced topics and hands-on projects in predictive modeling,
+                                    data analysis, and AI-driven solutions.
+                                </p>
+                            </div>
+                            <div class="hidden md:flex justify-center">
+                                <div class="timeline-circle absolute"></div>
+                            </div>
+                            <div class="hidden md:block"></div>
+                        </div>
+
+                        <!-- Item 2: Internship/Job -->
+                        <div class="relative md:grid md:grid-cols-2 md:gap-12 items-center">
+                            <div class="hidden md:block"></div>
+                            <div class="md:flex justify-center hidden md:flex">
+                                <div class="timeline-circle absolute"></div>
+                            </div>
+                            <!-- <div class="md:text-left p-4 bg-white rounded-lg shadow-xl border border-blue-100">
+                                <h3 class="text-xl font-bold text-blue-600">Internship/Jr. Engineer</h3>
+                                <p class="text-gray-600">[Company Name]</p>
+                                <p class="text-sm text-gray-500">Summer 20XX</p>
+                                <p class="mt-2 text-gray-700">Contributed to the development of [specific system] and improved process efficiency by X%.</p>
+                            </div> -->
+                        </div>
+
+                        <!-- Item 3: Secondary Education -->
+                        <!-- SSC -->
+                        <div class="relative md:grid md:grid-cols-2 md:gap-12 items-center mt-8">
+                            <div class="md:text-right p-4 bg-white rounded-lg shadow-xl border border-blue-100">
+                                <h3 class="text-xl font-bold text-blue-600">Secondary School Certificate (SSC)</h3>
+                                <p class="text-gray-600">Noyagaon M.A. Mojid Miah High School</p>
+                                <p class="text-sm text-gray-500">2020</p>
+                                <!-- <p class="mt-2 text-gray-700">Strong academic performance in Science group subjects.</p> -->
+                            </div>
+                            <div class="hidden md:flex justify-center">
+                                <div class="timeline-circle absolute"></div>
+                            </div>
+                            <div class="hidden md:block"></div>
+                        </div>
+
+                        <!-- HSC -->
+                        <div class="relative md:grid md:grid-cols-2 md:gap-12 items-center mt-8">
+                            <div class="md:text-right p-4 bg-white rounded-lg shadow-xl border border-blue-100">
+                                <h3 class="text-xl font-bold text-blue-600">Higher Secondary Certificate (HSC)</h3>
+                                <p class="text-gray-600">Milestone College</p>
+                                <p class="text-sm text-gray-500">2022</p>
+                                <!-- <p class="mt-2 text-gray-700">Focused on Science subjects and prepared for future studies in Computer Science and Data Science.</p> -->
+                            </div>
+                            <div class="hidden md:flex justify-center">
+                                <div class="timeline-circle absolute"></div>
+                            </div>
+                            <div class="hidden md:block"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section-padding bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2
+                    class="text-4xl font-bold text-center text-gray-900 mb-10 border-b-4 border-blue-200 inline-block pb-2">
+                    Projects</h2>
+
+                <!-- Filter Buttons -->
+                <div class="flex justify-center space-x-3 mb-10 flex-wrap">
+                    <button data-filter="all"
+                        class="filter-btn px-4 py-2 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition duration-300">All</button>
+                    <button data-filter="web"
+                        class="filter-btn px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-full hover:bg-gray-300 transition duration-300">Web
+                        Development</button>
+                    <button data-filter="hardware"
+                        class="filter-btn px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-full hover:bg-gray-300 transition duration-300">Hardware</button>
+                    <button data-filter="data"
+                        class="filter-btn px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-full hover:bg-gray-300 transition duration-300">Data
+                        Analysis</button>
+                </div>
+
+                <!-- Project Grid -->
+                <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <!-- Project 1: Web Development -->
+                    <div class="project-card bg-gray-50 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-200 p-6 flex flex-col justify-between"
+                        data-category="web">
+
+
+                        ---- <div
+                            class="project-card bg-gray-50 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-200 p-6 flex flex-col justify-between"
+                            data-category="web">
+                            <div>
+                                <!-- Project Image -->
+                                <img src="car.webp" alt="E-commerce Project Screenshot"
+                                    class="w-full h-48 object-cover rounded-lg mb-4">
+
+                                <h3 class="text-2xl font-bold text-blue-600 mb-2">Car Rental Management System</h3>
+                                <p class="text-sm text-gray-500 mb-4">Tech: C# </p>
+                                <p class="text-gray-700 mb-4">
+                                    A Car Rental Management System developed in C# to efficiently manage car inventory,
+                                    bookings, and customer information.
+                                </p>
+
+                                <!-- PDF Preview -->
+                                <div class="pdf-preview mt-4 border rounded-lg overflow-hidden">
+                                    <iframe src="Car.pdf" width="100%" height="400px"></iframe>
+                                </div>
+                            </div>
+
+                            <!-- Optional Details Button -->
+                            <a href="#"
+                                class="mt-4 block text-center py-2 px-4 bg-blue-100 text-blue-600 font-semibold rounded-lg hover:bg-blue-200 transition duration-300"
+                                onclick="alert('This would link to the project details page in a real portfolio.')">
+                                Details
+                            </a>
+                        </div>
+
+                        <!-- ---------------- -->
+                        <div>
+                            <!-- Project Image -->
+                            <img src="images.jpg" alt="E-commerce Project Screenshot"
+                                class="w-full h-48 object-cover rounded-lg mb-4">
+
+                            <h3 class="text-2xl font-bold text-blue-600 mb-2">BLOOD MANAGEMENT SYSTEM</h3>
+                            <p class="text-sm text-gray-500 mb-4">Tech: Database</p>
+                            <p class="text-gray-700 mb-4">
+                                Developed a Blood Management System that uses a database to efficiently store, track,
+                                and manage blood donors, inventory, and blood requests.
+                            </p>
+
+                            <!-- PDF Preview -->
+                            <div class="pdf-preview mt-4 border rounded-lg overflow-hidden">
+                                <iframe src="Blood.pdf" width="100%" height="400px"></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Optional Details Button -->
+                        <a href="#"
+                            class="mt-4 block text-center py-2 px-4 bg-blue-100 text-blue-600 font-semibold rounded-lg hover:bg-blue-200 transition duration-300"
+                            onclick="alert('This would link to the project details page in a real portfolio.')">
+                            Details
+                        </a>
+                    </div>
+                    <!-- ------------------------------ -->
+
+                    <div>
+                        <!-- Project Image -->
+                        <img src="bank.png" alt="E-commerce Project Screenshot"
+                            class="w-full h-48 object-cover rounded-lg mb-4">
+
+                        <h3 class="text-2xl font-bold text-blue-600 mb-2">
+                            Bank Employee Portal</h3>
+                        <p class="text-sm text-gray-500 mb-4">Tech: JAVA</p>
+                        <p class="text-gray-700 mb-4">
+                            A Bank Employee Portal developed in Java to manage customer accounts, transactions, and
+                            employee operations efficiently
+                        </p>
+
+                        <!-- PDF Preview -->
+                        <div class="pdf-preview mt-4 border rounded-lg overflow-hidden">
+                            <iframe src="Bank Employee Portal/" width="100%" height="400px"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Optional Details Button -->
+                    <!-- <a href="#" class="mt-4 block text-center py-2 px-4 bg-blue-100 text-blue-600 font-semibold rounded-lg hover:bg-blue-200 transition duration-300" onclick="alert('This would link to the project details page in a real portfolio.')">
+        Details
+    </a> -->
+                </div>
+
+                <!-- Project 2: Hardware -->
+                <!-- <div class="project-card bg-gray-50 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-200 p-6 flex flex-col justify-between" data-category="hardware">
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-600 mb-2">Automated Water Quality Sensor</h3>
+                            <p class="text-sm text-gray-500 mb-4">Tech: Arduino, pH Sensor, Python</p>
+                            <p class="text-gray-700 mb-4">Designed and prototyped a self-calibrating sensor system for remote monitoring of water parameters in agriculture.</p>
+                        </div>
+                        <a href="#" class="mt-auto block text-center py-2 px-4 bg-blue-100 text-blue-600 font-semibold rounded-lg hover:bg-blue-200 transition duration-300" onclick="alert('This would link to the project details page in a real portfolio.')">Details Page</a>
+                    </div> -->
+
+                <!-- Project 3: Data Analysis -->
+                <!-- <div class="project-card bg-gray-50 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-200 p-6 flex flex-col justify-between" data-category="data">
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-600 mb-2">Traffic Prediction Model</h3>
+                            <p class="text-sm text-gray-500 mb-4">Tech: Python, Pandas, Scikit-learn</p>
+                            <p class="text-gray-700 mb-4">Built a machine learning model to predict city-wide traffic congestion with 92% accuracy using time-series analysis.</p>
+                        </div>
+                        <a href="#" class="mt-auto block text-center py-2 px-4 bg-blue-100 text-blue-600 font-semibold rounded-lg hover:bg-blue-200 transition duration-300" onclick="alert('This would link to the project details page in a real portfolio.')">Details Page</a>
+                    </div> -->
+
+                <!-- Project 4: Web Development -->
+                <!-- <div class="project-card bg-gray-50 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-200 p-6 flex flex-col justify-between" data-category="web">
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-600 mb-2">Portfolio Generator Tool</h3>
+                            <p class="text-sm text-gray-500 mb-4">Tech: Vue.js, Firebase</p>
+                            <p class="text-gray-700 mb-4">A single-page application that lets users input data to dynamically generate and export professional portfolio pages.</p>
+                        </div>
+                        <a href="#" class="mt-auto block text-center py-2 px-4 bg-blue-100 text-blue-600 font-semibold rounded-lg hover:bg-blue-200 transition duration-300" onclick="alert('This would link to the project details page in a real portfolio.')">Details Page</a>
+                    </div> -->
+            </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section-padding bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <h2
+                    class="text-4xl font-bold text-center text-gray-900 mb-10 border-b-4 border-blue-200 inline-block pb-2">
+                    Technical Skills</h2>
+
+                <div class="space-y-6">
+                    <!-- Skill 1 -->
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-lg font-medium text-gray-700">Python Programming</span>
+                            <span class="text-sm font-medium text-gray-700" data-level="90">90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 2 -->
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-lg font-medium text-gray-700">C#</span>
+                            <span class="text-sm font-medium text-gray-700" data-level="85">85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 3 -->
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-lg font-medium text-gray-700">Frontend Web Development
+                                (HTML/CSS/JS)</span>
+                            <span class="text-sm font-medium text-gray-700" data-level="75">75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 4 -->
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-lg font-medium text-gray-700">Data Analysis</span>
+                            <span class="text-sm font-medium text-gray-700" data-level="80">80%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="section-padding bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <h2
+                    class="text-4xl font-bold text-center text-gray-900 mb-10 border-b-4 border-blue-200 inline-block pb-2">
+                    Achievements & Awards</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <!-- Achievement 1 -->
+                    <div class="p-6 bg-blue-50 rounded-lg shadow-md border-l-4 border-blue-600">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-2">AIUB CS FEST 2024</h3>
+                        <!-- <p class="text-gray-700 mb-4">
+        Awarded first place for the "Smart Agriculture System" project out of 50 competing teams (2023).
+    </p> -->
+
+                        <!-- PDF / Image Links -->
+                        <div class="flex gap-4 mt-2">
+                            <!-- PDF Link -->
+                            <a href="cs fest.pdf" target="_blank"
+                                class="py-2 px-4 bg-green-100 text-green-600 font-semibold rounded-lg hover:bg-green-200 transition duration-300">
+                                View PDF
+                            </a>
+
+                            <!-- Image Link -->
+                            <a href="cs f.jpg" target="_blank"
+                                class="py-2 px-4 bg-yellow-100 text-yellow-600 font-semibold rounded-lg hover:bg-yellow-200 transition duration-300">
+                                View Image
+                            </a>
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Achievement 2 -->
+                    <div class="p-6 bg-blue-50 rounded-lg shadow-md border-l-4 border-blue-600">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-2">Rover Scout </h3>
+                        <!-- <p class="text-gray-700 mb-4">
+        Awarded first place for the "Smart Agriculture System" project out of 50 competing teams (2023).
+    </p> -->
+
+                        <!-- PDF / Image Links -->
+                        <div class="flex gap-4 mt-2">
+                            <!-- PDF Link -->
+                            <a href="scoutCir.pdf" target="_blank"
+                                class="py-2 px-4 bg-green-100 text-green-600 font-semibold rounded-lg hover:bg-green-200 transition duration-300">
+                                View PDF
+                            </a>
+
+                            <!-- Image Link -->
+                            <a href="scout (2).jpg" target="_blank"
+                                class="py-2 px-4 bg-yellow-100 text-yellow-600 font-semibold rounded-lg hover:bg-yellow-200 transition duration-300">
+                                View Image
+                            </a>
+                        </div>
+
+
+                    </div>
+                    <!-- Achievement 3 -->
+                    <div class="p-6 bg-blue-50 rounded-lg shadow-md border-l-4 border-blue-600">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-2">Smart Bangladesh Run 2024</h3>
+                        <!-- <p class="text-gray-700">Achieved Dean's List status for 4 consecutive semesters for maintaining a GPA above 3.8/4.0.</p> -->
+                        <div class="flex gap-4 mt-2">
+                            <!-- PDF Link -->
+                            <a href="Smart Bangladesh Run 2024 Results.pdf" target="_blank"
+                                class="py-2 px-4 bg-green-100 text-green-600 font-semibold rounded-lg hover:bg-green-200 transition duration-300">
+                                View PDF
+                            </a>
+
+                            <!-- Image Link -->
+                            <a href="run.jpg" target="_blank"
+                                class="py-2 px-4 bg-yellow-100 text-yellow-600 font-semibold rounded-lg hover:bg-yellow-200 transition duration-300">
+                                View Image
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Achievement 4 -->
+                    <div class="p-6 bg-blue-50 rounded-lg shadow-md border-l-4 border-blue-600">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-2">BOA Marathon 2024</h3>
+                        <!-- 
+                        <div class="flex gap-4 mt-2">
+        <! PDF Link -->
+                        <a href="BOA Marathon 2024 Results.pdf" target="_blank"
+                            class="py-2 px-4 bg-green-100 text-green-600 font-semibold rounded-lg hover:bg-green-200 transition duration-300">
+                            View PDF
+                        </a>
+
+                        <!-- Image Link -->
+                        <a href="bio.jpg" target="_blank"
+                            class="py-2 px-4 bg-yellow-100 text-yellow-600 font-semibold rounded-lg hover:bg-yellow-200 transition duration-300">
+                            View Image
+                        </a>
+                    </div>
+                    <!-- <p class="text-gray-700">Led a team of 5 in the development of a student organization website and infrastructure overhaul.</p> -->
+
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Resume Section (PDF Preview) -->
+        <section id="resume" class="section-padding bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                <h2
+                    class="text-4xl font-bold text-center text-gray-900 mb-10 border-b-4 border-blue-200 inline-block pb-2">
+                    My Resume Snapshot</h2>
+
+                <div class="bg-white p-6 rounded-xl shadow-2xl">
+                    <p class="text-center text-lg text-gray-700 mb-6">Below is a visual snapshot of my Curriculum Vitae.
+                        For a full, detailed document, please contact me directly.</p>
+
+                    <!-- Resume PDF Display -->
+                    <iframe src="A. R. M. ZEHAD_CV (1) (2).pdf"
+                        class="w-full h-[1100px] rounded-lg shadow-lg border-2 border-gray-200"
+                        title="Resume PDF"></iframe>
+
+                    <!-- Button to Download PDF -->
+                    <div class="text-center mt-6">
+                        <a href="A. R. M. ZEHAD_CV (1) (2).pdf" download
+                            class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
+                            Download Full PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<!-- ================ -->
+
+<!-- Video CV Section -->
+<section id="video-cv" class="section-padding bg-gray-100">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+        <h2 class="text-4xl font-bold text-center text-gray-900 mb-10 border-b-4 border-blue-200 inline-block pb-2">
+            My Video CV
+        </h2>
+
+        <div class="bg-white p-6 rounded-xl shadow-2xl">
+            <p class="text-center text-lg text-gray-700 mb-6">
+                Watch my Video Curriculum Vitae to get a brief overview of my skills, projects, and professional journey.
+            </p>
+
+            <!-- Video Embed -->
+            <div class="flex justify-center">
+                <!-- YouTube Video Embed Example -->
+                <iframe width="800" height="450"
+                        src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                        title="Video CV"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        class="rounded-lg shadow-lg"></iframe>
+
+                <!-- OR Local Video Example -->
+                <!--
+                <video controls class="w-full max-w-4xl rounded-lg shadow-lg">
+                    <source src="YourVideoCV.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                -->
+            </div>
+
+            <!-- Optional Button to Download Video -->
+            <div class="text-center mt-6">
+                <a href="YourVideoCV.mp4" download
+                   class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
+                   Download Video CV
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================ -->
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+                <h2
+                    class="text-4xl font-bold text-center text-gray-900 mb-10 border-b-4 border-blue-200 inline-block pb-2">
+                    Get in Touch</h2>
+
+                <form id="contact-form" class="bg-gray-50 p-8 rounded-xl shadow-2xl space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" id="name" name="name" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                        <textarea id="message" name="message" rows="4" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-3 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition duration-300">Send
+                        Message</button>
+
+                    <!-- Success Message Box -->
+                    <div id="success-message"
+                        class="hidden p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-center font-medium"
+                        role="alert">
+                        Thank you for your message! I will get back to you shortly.
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-6">
+        <div class="container mx-auto px-4 text-center text-gray-400 text-sm">
+            &copy; 2025 A.R.M. Zehad | All rights reserved. | Built with Tailwind CSS.
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('success-message');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            // 1. Mobile Menu Toggle
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // 2. Intersection Observer for Active Link Highlighting
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Set initial active state for Home
+            document.querySelector('a[href="#home"]').classList.add('active');
+
+            // 3. Project Filtering Logic
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button styling
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('bg-blue-600', 'text-white');
+                        btn.classList.add('bg-gray-200', 'text-gray-700');
+                    });
+                    button.classList.add('bg-blue-600', 'text-white');
+                    button.classList.remove('bg-gray-200', 'text-gray-700');
+
+                    const filter = button.dataset.filter;
+
+                    projectCards.forEach(card => {
+                        const category = card.dataset.category;
+                        if (filter === 'all' || filter === category) {
+                            card.style.display = 'flex'; // Show card
+                            card.classList.remove('opacity-0');
+                            card.classList.add('opacity-100');
+                        } else {
+                            card.classList.remove('opacity-100');
+                            card.classList.add('opacity-0');
+                            // Hide card after transition (optional, for clean layout)
+                            setTimeout(() => { card.style.display = 'none'; }, 300);
+                        }
+                    });
+                });
+            });
+            // Set 'All' button as active initially
+            document.querySelector('.filter-btn[data-filter="all"]').click();
+
+            // 4. Contact Form Validation (Client-side demo)
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Basic validation checks (since no actual backend is implemented)
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (name === "" || email === "" || message === "") {
+                    // Use a message box/alert replacement since real alerts are forbidden
+                    successMessage.textContent = "Please fill out all required fields.";
+                    successMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+                    successMessage.classList.add('bg-red-100', 'text-red-700');
+                    setTimeout(() => successMessage.classList.add('hidden'), 5000);
+                    return;
+                }
+
+                // Simulate form submission success
+                contactForm.reset();
+                successMessage.textContent = "Thank you for your message! I will get back to you shortly.";
+                successMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+                successMessage.classList.add('bg-green-100', 'text-green-700');
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+
+</html>
